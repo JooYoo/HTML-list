@@ -1,15 +1,17 @@
-$(document).ready(function(){
+$(document).ready(function () {
     var $testLi = $('.testLi'),
         $btnDone = $('.btnDone');
 
-    function addStrick(){
-
-        var liText = $testLi.text();
-        $testLi.append("<strike>"+liText+"</strike>" );
+    function addStrick() {
+        // get the traget element
+        var liText = $testLi.html();
+        // add tag to the target element
+        liText = '<strike>' + liText + '</strike>';
+        // add the result back to DOM
+        $testLi.html(liText);
     }
 
-    $btnDone.on('click', function(){
+    $btnDone.on('click', function () {
         addStrick();
     });
-
 });

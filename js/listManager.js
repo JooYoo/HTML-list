@@ -3,40 +3,23 @@ $(document).ready(function () {
         $btnDone = $('.btnDone'),
         $btnNotDone = $('.btnNotDone');
 
-
-    function addStrike() {
-        // get the traget element
-        var liText = $testLi.html();
-        // add tag to the target element
-        liText = '<strike class="strikeText">' + liText + '</strike>';
-        // add the result back to DOM
-        $testLi.html(liText);
-    }
-
-    function removeStrike(){
-        //in <li> find <strike> contents;
-        // unwrap() 去除找到的内容的父标签
-        $testLi.find('strike').contents().unwrap();
-    }
-
-
-    function strikeSwitch(){
-        if($testLi.parent().is("strike")){
-            $testLi.unwrap();
+    function strikeSwitch(element) {
+        if (element.parent().is("strike")) {
+            element.unwrap();
         }
-        else{
-            $testLi.wrap("<strike></strike>");
+        else {
+            element.wrap("<strike></strike>");
         }
     }
-
-    $btnDone.on('click', function () {
-        // addStrike();
-        strikeSwitch();
+   
+    // 点按返回点按的节点内容
+    $('li').click(function (e) {
+        // capture clicked element by id
+        var targetID = e.target.id;
+        var targetEle = document.getElementById(targetID);
+        // save as jQery
+        var listItem = $(targetEle)
+        // call strike function
+        strikeSwitch(listItem);
     });
-
-    $btnNotDone.on('click', function(){
-        removeStrike();
-    });
-
-
 });

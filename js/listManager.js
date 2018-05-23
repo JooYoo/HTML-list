@@ -19,11 +19,24 @@ $(document).ready(function () {
         $testLi.find('strike').contents().unwrap();
     }
 
+
+    function strikeSwitch(){
+        if($testLi.parent().is("strike")){
+            $testLi.unwrap();
+        }
+        else{
+            $testLi.wrap("<strike></strike>");
+        }
+    }
+
     $btnDone.on('click', function () {
-        addStrike();
+        // addStrike();
+        strikeSwitch();
     });
 
     $btnNotDone.on('click', function(){
         removeStrike();
     });
+
+
 });

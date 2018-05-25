@@ -6,7 +6,8 @@ $(document).ready(function () {
 
     //当天时间
     // document.getElementById("h2Title").innerHTML = new Date().toLocaleString();
-    document.getElementById("h2Title").innerHTML = createDate();
+    // document.getElementById("h2Title").innerHTML = createDate();
+    document.getElementById("h2Title").innerHTML = createWeekDay();
 
     // 创建已经格式化好的
     function createDate() {
@@ -20,8 +21,18 @@ $(document).ready(function () {
         var year = date.getFullYear();
         var month = monthNames[date.getMonth()];
         var day = date.getDate();
+        var dayOfWeek = date.weekDay();
 
-        return  month + "-" + day +  "-" +year ;
+        return  month + "-" + day +  "-" +year + "-" + dayOfWeek ;
+    }
+
+    function createWeekDay(){ // 同上
+        var date = new Date();
+
+        const dayOfWeek =['Monday','Tuesday','Wednesday',
+                        'Thursday','Friday','Saturday','Sunday'];
+
+        return dayOfWeek[date.getDay()-1];                        
     }
 
 

@@ -4,24 +4,22 @@ $(document).ready(function () {
         $btnNotDone = $('.btnNotDone'),
         $h2Title = $('#h2Title'); // 当然可以用jQ，但如果js可以解决就尽量用纯js
 
-    //当天时间
+    // 显示当天时间
     // document.getElementById("h2Title").innerHTML = new Date().toLocaleString();
     // document.getElementById("h2Title").innerHTML = createDate();
     document.getElementById("h2Title").innerHTML = createWeekDay();
 
-    // 创建已经格式化好的
+    // 创建已经格式化好的年月日
     function createDate() {
         var date = new Date(); // 实例化日期类
-
-        // 把所有名字在数组里，之后用getMonth()作为index来选择月份的名字
-        const monthNames = ["Jan", "Feb", "Mar", "Apr",
+       
+        const monthNames = ["Jan", "Feb", "Mar", "Apr",  // 把所有名字在数组里，之后用getMonth()作为index来选择月份的名字
                             "May", "Jun", "Jul", "Aug",
                             "Sept", "Oct", "Nov", "Dec"];
 
         var year = date.getFullYear();
         var month = monthNames[date.getMonth()];
         var day = date.getDate();
-        var dayOfWeek = date.weekDay();
 
         return  month + "-" + day +  "-" +year + "-" + dayOfWeek ;
     }
